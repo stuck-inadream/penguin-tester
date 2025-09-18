@@ -1,0 +1,6 @@
+{
+  "myth_yes_bias": 0.7,
+  "exception_no_bias": 0.6,
+  "empty_yes_bias": 0.9,
+  "divergence": 0.3
+}

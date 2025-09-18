@@ -1,0 +1,10 @@
+# Math and code RLVR with DuPO
+
+This notebook demonstrates CVR rewards and DuPO dual checks on toy tasks.
+
+Example output
+
+```
+Rewards: [0.8, 0.7, 0.8, 0.8]
+DuPO Check: {'pairs_checked': 6, 'disagreements': 1}
+```

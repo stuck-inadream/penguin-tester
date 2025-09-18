@@ -1,0 +1,4 @@
+ - name: myth_rule
+   kind: myth
+   pattern: "(?i)\bpenguin\b"
+   penalty: 2

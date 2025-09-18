@@ -1,0 +1,10 @@
+# Deep research single agent
+
+A tiny evaluator with a toy knowledge graph and checkpoints.
+
+Example output
+
+```
+hits ['penguin']
+{'checkpoints': 2, 'final_len': 5, 'score': 0.5}
+```

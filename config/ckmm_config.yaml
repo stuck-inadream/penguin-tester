@@ -1,0 +1,11 @@
+fuel:
+  max_time_s: 3.0
+  max_kib: 20480
+  max_attention: 20
+temporal:
+  stability_min: 0.66
+relational:
+  council_min: 0.67
+ethics:
+  max_penalty: 0
+  recovery_min: 0.0

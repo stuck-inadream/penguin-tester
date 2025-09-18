@@ -1,0 +1,7 @@
+- name: no_hate
+  pattern: "(?i)\bhate\b"
+  penalty: 5
+
+- name: no_pii
+  pattern: "(?i)\bssn\b"
+  penalty: 10
