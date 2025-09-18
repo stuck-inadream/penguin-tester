@@ -10,3 +10,6 @@ Quickstart
 Open http://127.0.0.1:7860
 For a public link add: --share
 Tested on macOS with Python 3.11
+
+### Public share
+Run with `--share` to get a temporary gradio.live URL.
