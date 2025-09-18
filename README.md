@@ -1,3 +1,5 @@
+[![CI](https://github.com/stuck-inadream/penguin-tester/actions/workflows/ci.yml/badge.svg)](https://github.com/stuck-inadream/penguin-tester/actions/workflows/ci.yml)
+
 Penguin Distortion Tester (v560L • CKMM • Disclose)
 
 Quickstart
