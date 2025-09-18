@@ -1,3 +1,11 @@
+---
+title: Penguin Distortion Tester
+sdk: gradio
+app_file: gradio_demo.py
+pinned: false
+license: mit
+---
+
 Penguin Distortion Tester (v560L • CKMM • Disclose)
 
 Quickstart
