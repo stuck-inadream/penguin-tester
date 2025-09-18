@@ -196,6 +196,7 @@ def _parse_thresholds(th_json: str) -> Dict[str, Any]:
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--share", action="store_true", help="Public share (gradio.live)")
     ap.add_argument("--server_name", type=str, default=None, help="Gradio server name")
     ap.add_argument("--server_port", type=int, default=None, help="Gradio server port")
     ap.add_argument("--log-level", type=str, default="ERROR",
@@ -246,7 +247,7 @@ def main():
 
     title = f"Penguin Distortion Tester — fuel≤{base_th.get('fuel', {}).get('max_time_s', 'n/a')}s | GPU {gpu_status_safe().get('gpus',0)}"
     iface = gr.Interface(fn=checker, inputs="text", outputs="text", title=title)
-    iface.launch(server_name=args.server_name, server_port=args.server_port)
+    iface.launch(server_name=args.server_name, server_port=args.server_port, share=args.share)
 
 if __name__ == "__main__":
     main()
