@@ -246,7 +246,7 @@ def main():
 
     title = f"Penguin Distortion Tester — fuel≤{base_th.get('fuel', {}).get('max_time_s', 'n/a')}s | GPU {gpu_status_safe().get('gpus',0)}"
     iface = gr.Interface(fn=checker, inputs="text", outputs="text", title=title)
-    iface.launch(server_name=args.server_name, server_port=args.server_port, share=args.share)
+    iface.launch(server_name=args.server_name, server_port=args.server_port, share=args.share, share=args.share)
 
 if __name__ == "__main__":
     main()
