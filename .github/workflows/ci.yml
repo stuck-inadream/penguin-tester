@@ -18,48 +18,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest==8.3.3 z3-solver==4.13.0.0 gradio==4.44.0
 
-      - name: Show repo state
-        run: |
-          python -V
-          pip list
-          echo "root files:"
-          ls -la
-          echo "tests dir:"
-          ls -la tests || true
-          echo "pytest.ini (may be absent):"
-          cat pytest.ini || true
-
-           - name: Import sanity outside pytest
-        run: |
-          python - <<'PY'
-          print("sanity start")
-          import gradio_demo as gd
-          print("audit first line:", gd.audit("penguin on ice").splitlines()[0])
-          from z3 import Solver, Bool, sat
-          s = Solver(); x = Bool("x"); s.add(x == True)
-          print("z3 sat check:", s.check() == sat)
-          PY
-
-      - name: Collect tests verbosely
-        run: |
-          set -x
-          pytest --collect-only -vv tests || true
-          echo "collect exit code: $?"
-
-      - name: Run tests one by one to expose the first failing import
-        run: |
-          set -x
-          for f in tests/*.py; do
-            echo "==== running $f ===="
-            pytest -vv "$f" || true
-            echo "exit code for $f: $?"
-          done
-          # force a failure at the end if any test failed
-          python - <<'PY'
-          import sys, pathlib, subprocess
-          failed = False
-          for p in pathlib.Path("tests").glob("*.py"):
-              r = subprocess.run(["pytest","-q",str(p)])
-              failed = failed or r.returncode != 0
-          sys.exit(1 if failed else 0)
-          PY
+      - name: Run tests
+        run: pytest -ra
