@@ -1,12 +1,18 @@
 from z3 import Solver, Bool, sat
 
-def audit(prompt: str) -> str:
+def _toy_penguin_sat(prompt: str) -> str:
     s = Solver()
     x = Bool("penguin_on_ice")
     want = "penguin on ice" in (prompt or "").lower()
     s.add(x == want)
-    result = "sat" if s.check() == sat else "unsat"
-    return f"Result: {result}\nFuel=1.00  Temporal=0.80  Relational=0.75  Ethics=0.95  Embodiment=0.60"
+    return "sat" if s.check() == sat else "unsat"
+
+def audit(prompt: str) -> str:
+    result = _toy_penguin_sat(prompt)
+    # fixed stable stub numbers
+    line1 = f"Result: {result}"
+    line2 = "Fuel=1.00  Temporal=0.80  Relational=0.75  Ethics=0.95  Embodiment=0.60"
+    return f"{line1}\n{line2}"
 
 def build_demo():
     import gradio as gr
