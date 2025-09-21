@@ -1,15 +1,12 @@
-# Python
+.venv/
 __pycache__/
 *.pyc
 *.pyo
-
-# venvs
-.venv/
-venv/
-
-# logs / artifacts
-errors.log
-*.png
-dist/
+*.DS_Store
+.cache/
+.dist/
 build/
-*.egg-info/
+dist/
+*.log
+errors.log
+docs/screenshot.png
