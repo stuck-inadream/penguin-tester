@@ -29,11 +29,10 @@ jobs:
           echo "pytest.ini (may be absent):"
           cat pytest.ini || true
 
-      - name: Import sanity outside pytest
+           - name: Import sanity outside pytest
         run: |
           python - <<'PY'
-          import importlib, sys
-          print("import gradio_demo:", importlib.util.find_spec("gradio_demo") is not None)
+          print("sanity start")
           import gradio_demo as gd
           print("audit first line:", gd.audit("penguin on ice").splitlines()[0])
           from z3 import Solver, Bool, sat
