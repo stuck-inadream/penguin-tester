@@ -1,4 +1,3 @@
-import gradio as gr
 from z3 import Solver, Bool, sat
 
 def _toy_penguin_sat(prompt: str) -> str:
@@ -29,11 +28,16 @@ def audit(prompt: str) -> str:
         f"Embodiment={m['Embodiment']:.2f}"
     )
 
-with gr.Blocks(title="Penguin Distortion Tester") as demo:
-    gr.Markdown("# Penguin Distortion Tester")
-    inp = gr.Textbox(label="Prompt", value="penguin on ice")
-    out = gr.Textbox(label="Audit Output", lines=4)
-    gr.Button("Run audit").click(fn=audit, inputs=inp, outputs=out)
+def build_demo():
+    import gradio as gr  # import only when launching the UI
+    with gr.Blocks(title="Penguin Distortion Tester") as demo:
+        gr.Markdown("# Penguin Distortion Tester")
+        gr.Markdown("Try the phrase **penguin on ice** and run the audit.")
+        inp = gr.Textbox(label="Prompt", value="penguin on ice")
+        out = gr.Textbox(label="Audit Output", lines=4)
+        gr.Button("Run audit").click(fn=audit, inputs=inp, outputs=out)
+    return demo
 
 if __name__ == "__main__":
+    demo = build_demo()
     demo.launch(server_name="0.0.0.0", server_port=7860)
