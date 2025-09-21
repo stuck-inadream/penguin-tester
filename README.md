@@ -1,60 +1,84 @@
----
-title: Penguin Distortion Tester
-sdk: gradio
-app_file: gradio_demo.py
-pinned: false
-license: mit
----
-
 Penguin Distortion Tester (v560L • CKMM • Disclose)
 
+[![CI](https://github.com/stuck-inadream/penguin-tester/actions/workflows/ci.yml/badge.svg)](https://github.com/stuck-inadream/penguin-tester/actions)  
+[![HF Space](https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Penguin%20Distortion%20Tester-blue)](https://huggingface.co/spaces/stuck-inadream/penguin-distortion-tester)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+
+Overview
+The Penguin Distortion Tester is a minimal, public-safe harness to audit symbolic distortion on a toy “Penguin” task.
+It demonstrates sat/unsat behavior (via Z3) and reports CKMM-L context metrics across five layers:
+Fuel (Energy–Resource): wall time, peak KiB (tracemalloc), and human-attention ticks
+
+
+Temporal Coherence: replay stability ratio
+Relational Field: council agreement vs. drift (majority vote placeholder)
+Ethical Constraints: regex penalties + recovery flag
+Embodiment: device/substrate capture with validated hint
+
+This repo is a disclose build: it lists exactly what a prior reviewer saw — no more, no less — and keeps proprietary weighting/heuristics private.
+
 Quickstart
-1) python3.11 -m venv .venv
-2) source .venv/bin/activate
-3) python -m pip install --upgrade pip
-4) pip install -r requirements.txt
-5) python gradio_demo.py --summary --ckmm-iterations 100000 --server_port 7860
-
-Open http://127.0.0.1:7860
-For a public link add: --share
-Tested on macOS with Python 3.11
-
-### Public share
-Run with `--share` to get a temporary gradio.live URL.
-
----
-
-### Penguin Distortion Tester — how to run
-
-[![HF Space](https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Penguin%20Distortion%20Tester-blue)](https://huggingface.co/spaces/stuck-inadream/penguin-distortion-tester)
-
-#### Local quickstart
-```bash
-# from repo root
-python3.11 -m venv .venv && source .venv/bin/activate
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-# run (auto-summarize UI, 100k iterations, choose a port)
+# Run: summarize UI, 100k iterations, choose a port
 env PYTHONUNBUFFERED=1 python gradio_demo.py --summary --ckmm-iterations 100000 --server_port 7860
 
-md
+Open http://127.0.0.1:7860 in your browser.
+ Use --share for a temporary public link.
+⚠️ Heads-up: --share exposes a public URL. Treat it as untrusted. Do not upload sensitive data.
 
----
+Features (Public-Safe)
+“Penguin” symbolic check (baseline sat, forced unsat via contradiction trigger)
+Distortion score toy formula: modal × diversity (with toy numbers disclosed below)
+CKMM-L interfaces only (no proprietary internals)
+Configurable workload and thresholds:
+--ckmm-iterations N (CPU loop, default documented)
+--ckmm-thresholds '{"fuel":{"max_time_s":2.0}}' (JSON Schema-validated)
+--ckmm-verbose (pretty JSON output)
 
-### Penguin Distortion Tester — how to run
 
-[![HF Space](https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Penguin%20Distortion%20Tester-blue)](https://huggingface.co/spaces/stuck-inadream/penguin-distortion-tester)
+Logging: rotating errors.log + console log level
+CI: pytest via GitHub Actions
 
-#### Local quickstart
-```bash
-# from repo root
-python3.11 -m venv .venv && source .venv/bin/activate
+
+Public Disclosure Parity Appendix
+Score formula: modal × diversity; diversity = avg edit distance; toy values 0.33 × 2 = 0.66
+Load fractions: 1.0 / 0.6 / 0.7, divergence = 0.3
+HSIL policy names: prefer_specific_over_general, safety_first, audit_bias
+Z3 baseline sat; forced contradiction → unsat; heatmap.png modal plot
+Gradio flags (server name/port), log level, rotating logs
+CI + tests, CKMM-L interfaces (fuel / temporal / council / ethics / embodiment)
+
+Not disclosed: proprietary weighting/aggregation schemes, true diversity/council math beyond placeholders, production energy models, or internal heuristics.
+
+FAQ
+Is this just a toy?
+ Yes — by design. It’s a teaching harness: easy to run, safe to share, useful for audits.
+Can I tune workloads?
+ Yes — use --ckmm-iterations (e.g., 5_000_000 for measurable fuel) and JSON thresholds.
+Does --share upload my data?
+ No uploads unless you explicitly make them. --share only exposes a temporary Gradio URL. Treat it as public.
+
+Development & Tests
 pip install -r requirements.txt
+pytest -q
 
-# run (auto-summarize UI, 100k iterations, choose a port)
-env PYTHONUNBUFFERED=1 python gradio_demo.py --summary --ckmm-iterations 100000 --server_port 7860
+pip install -r requirements.txt
+pytest -q
 
-```          ← closes the code block (type three backticks)
-MD            ← closes the heredoc
+MIT © stuck-inadream
 
-```
+Roadmap & Contributions
+Add screenshot(s) of the UI (docs/screenshot.png)
+Pin dependencies in requirements.txt for CI stability
+CI improvements: multi-stage (lint then test) with pip cache
+Optional: package-ready entry point (pyproject.toml) for pipx run penguin-tester
+
+Contributions welcome! See CONTRIBUTING.md (to be added).
+
+Screenshot
+<img width="1234" height="750" alt="Screenshot 2025-09-21 at 9 28 02 AM" src="https://github.com/user-attachments/assets/3d0d0b21-539d-4f63-90b1-67b719130949" />
