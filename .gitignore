@@ -1,7 +1,15 @@
-.venv/
+# Python
 __pycache__/
 *.pyc
-.DS_Store
+*.pyo
+
+# venvs
+.venv/
+venv/
+
+# logs / artifacts
 errors.log
+*.png
 dist/
-.build/
+build/
+*.egg-info/
