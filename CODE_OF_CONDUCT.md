@@ -1,3 +1,2 @@
 # Code of Conduct
-
-Be respectful. Assume good intent. No harassment. Use issues and security channels appropriately.
+Be respectful. No harassment, hate speech, or personal attacks. Report issues privately via SECURITY.md.
