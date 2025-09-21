@@ -2,5 +2,6 @@
 __pycache__/
 *.pyc
 .DS_Store
-server.log
-nohup.out
+errors.log
+dist/
+.build/
